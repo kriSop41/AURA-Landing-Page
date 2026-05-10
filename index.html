@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA | Your Music, Your Vibe</title>
+    <meta name="description"
+        content="Manage your AURA music experience. Access the web player or download the Android application.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <canvas id="tubes-canvas"></canvas>
+    <div class="mobile-aurora" aria-hidden="true">
+        <span class="aurora-blob blob-one"></span>
+        <span class="aurora-blob blob-two"></span>
+        <span class="aurora-blob blob-three"></span>
+        <span class="aurora-grid"></span>
+    </div>
+
+    <header>
+        <div class="container">
+            <button class="donate-top-btn" id="open-donate-modal" type="button">Donate Us</button>
+            <div class="logo">AURA</div>
+        </div>
+    </header>
+
+    <div class="donate-modal" id="donate-modal" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="donate-modal-title">
+        <div class="donate-modal-backdrop" data-donate-close></div>
+        <div class="donate-modal-panel">
+            <button class="donate-modal-close" type="button" aria-label="Close donate popup"
+                data-donate-close>&times;</button>
+            <h2 id="donate-modal-title">Fuel The AURA Vibe</h2>
+            <p>Your support helps us build better features, improve performance, and keep the music experience growing.
+            </p>
+            <div class="upi-donate-block">
+                <img class="donate-qr-image" id="donate-qr-image" alt="UPI QR code for donation">
+                <div class="upi-donate-meta">
+                    <span class="upi-meta-label">UPI ID</span>
+                    <strong id="upi-id-text">suyashu@fam</strong>
+                </div>
+                <div class="upi-donate-actions">
+                    <button class="upi-copy-btn" id="copy-upi-id-btn" type="button">Copy UPI ID</button>
+                    <a class="upi-copy-btn upi-qr-download-btn" id="download-qr-btn" href="#"
+                        download="aura-donate-qr.png">Download QR</a>
+                </div>
+                <p class="upi-donate-help">Tap Donate and enter amount in your UPI app. If your app still auto-fills
+                    amount, clear/edit it there. If blocked, use Pay via Mobile Number or Scan QR.</p>
+            </div>
+            <button class="donate-modal-action" id="donate-action-btn" type="button">Donate Us &lt;3.</button>
+        </div>
+    </div>
+
+    <div class="apk-guide-modal" id="apk-guide-modal" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="apk-guide-title">
+        <div class="apk-guide-backdrop" data-apk-close></div>
+        <div class="apk-guide-panel">
+            <button class="apk-guide-close" type="button" aria-label="Close APK install popup"
+                data-apk-close>&times;</button>
+            <h2 id="apk-guide-title">New to Installing Apks?</h2>
+            <p>No worries. Watch these quick tutorials to install the app safely. Videos play online inside this popup,
+                no download needed.</p>
+
+            <div class="apk-tutorial-grid">
+                <article class="apk-tutorial-card">
+                    <h3>Tutorial 1</h3>
+                    <video controls controlsList="nodownload" preload="none" playsinline>
+                        <source src="assets/VIDEO_1.mp4" type="video/mp4">
+                    </video>
+                </article>
+                <article class="apk-tutorial-card">
+                    <h3>Tutorial 2</h3>
+                    <video controls controlsList="nodownload" preload="none" playsinline>
+                        <source src="assets/VIDEO_2.mp4" type="video/mp4">
+                    </video>
+                </article>
+                <article class="apk-tutorial-card">
+                    <h3>Tutorial 3</h3>
+                    <video controls controlsList="nodownload" preload="none" playsinline>
+                        <source src="assets/VIDEO_3.mp4" type="video/mp4">
+                    </video>
+                </article>
+            </div>
+
+            <a class="apk-download-btn" href="assets/AURA-Music.apk" download>Download AURA</a>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="hero">
+            <h1>AURA</h1>
+            <p>The ultimate music sanctuary for the next generation. Crystal clear audio, immersive vibes, and your
+                entire library in the palm of your hand.</p>
+
+        </section>
+
+        <!-- 3D Showcase Section -->
+        <section class="showcase">
+            <div class="mockup-container">
+                <div class="monitor-wrapper" id="monitor-mockup">
+                    <div class="monitor-frame">
+                        <img src="assets/PC-PHOTO.png" alt="AURA Desktop Player" loading="lazy" decoding="async">
+                    </div>
+                    <div class="monitor-stand"></div>
+                    <div class="monitor-base"></div>
+                </div>
+                <div class="phone-wrapper" id="phone-mockup">
+                    <div class="phone-frame">
+                        <div class="notch"></div>
+                        <img src="assets/PHONE-PHOTO.png" alt="AURA Mobile App" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preview Section -->
+        <section class="preview reveal">
+            <h2>Experience the Future</h2>
+            <p>Designed for the digital native. Fast, fluid, and focused on you.</p>
+
+            <div class="preview-grid">
+                <div class="feature-item reveal">
+                    <i data-lucide="zap"></i>
+                    <h3>Instant Sync</h3>
+                    <p>Your playlists and favorites follow you everywhere, instantly.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <i data-lucide="layers"></i>
+                    <h3>Immersive UI</h3>
+                    <p>Glassmorphic design that reacts to your music's mood.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <i data-lucide="users"></i>
+                    <h3>Listen Together</h3>
+                    <p>Host parties and vibe with friends in real-time.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phone Mockup (Re-added for full-page effect) -->
+        <section class="preview reveal">
+            <h2>Experience player</h2>
+            <p>Download on your phone or just go on our web player, the choice is yours. Enjoy music like never before.
+            </p>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta reveal" style="display: flex; justify-content: center; padding-bottom: 150px;">
+            <div class="choice-section" style="animation: none; opacity: 1; transform: none; margin-top: 0;">
+                <a href="https://aura-music-player.onrender.com/" class="choice-card web float-animation">
+                    <i data-lucide="monitor"></i>
+                    <h3>Launch Web Player</h3>
+                    <span>Listen directly in your browser</span>
+                </a>
+
+                <a href="#" id="open-apk-guide-modal" class="choice-card android float-animation"
+                    style="animation-delay: -1.5s;">
+                    <i data-lucide="smartphone"></i>
+                    <h3>Download Android App</h3>
+                    <span>Get the full AURA experience</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="index.js?v=20260510-7"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
