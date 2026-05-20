@@ -546,9 +546,8 @@ header .container {
     font-weight: 900;
     line-height: 1;
     margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s forwards;
+    opacity: 1;
+    transform: none;
 }
 
 .hero p {
@@ -556,9 +555,8 @@ header .container {
     color: var(--text-dim);
     max-width: 600px;
     margin-bottom: 40px;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s 0.2s forwards;
+    opacity: 1;
+    transform: none;
 }
 
 /* Cards Section */
@@ -568,11 +566,28 @@ header .container {
     width: 100%;
     max-width: 900px;
     margin-top: 20px;
+    opacity: 1;
+    transform: none;
+    perspective: 1600px;
+    transform-style: preserve-3d;
+}
+
+body.motion-safe .hero h1 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards;
+}
+
+body.motion-safe .hero p {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s 0.2s forwards;
+}
+
+body.motion-safe .choice-section {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s 0.4s forwards;
-    perspective: 1600px;
-    transform-style: preserve-3d;
 }
 
 .choice-card {
@@ -991,13 +1006,19 @@ body.lite-mode .phone-wrapper {
     border: 1px solid var(--glass-border);
 }
 
-.reveal {
+.reveal,
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.motion-safe .reveal {
     opacity: 0;
     transform: translateY(50px);
     transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.reveal.active {
+body.motion-safe .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }

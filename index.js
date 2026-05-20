@@ -56,6 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('lite-mode');
     }
 
+    const shouldEnableMotionSafeMode = !prefersReducedMotion && !shouldUseLiteMode;
+    if (shouldEnableMotionSafeMode) {
+        document.body.classList.add('motion-safe');
+    }
+
     const buildUpiUri = () => {
         const upiPayload = {
             pa: UPI_DONATION_SETTINGS.payeeAddress,
