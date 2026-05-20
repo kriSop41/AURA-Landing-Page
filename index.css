@@ -516,11 +516,18 @@ header .container {
     font-weight: 800;
     letter-spacing: 4px;
     background: linear-gradient(90deg, var(--primary), #fff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #f8fafc;
     margin: 0 auto;
     transform: translateX(-10px);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .logo {
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
 }
 
 /* Hero Section */
@@ -720,6 +727,13 @@ body.lite-mode .feature-item:hover {
 }
 
 body.lite-mode .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+body.lite-mode .hero h1,
+body.lite-mode .hero p,
+body.lite-mode .choice-section {
     opacity: 1 !important;
     transform: none !important;
 }

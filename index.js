@@ -40,9 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         isLikelyMobile &&
         ((deviceMemory > 0 && deviceMemory <= 4) ||
             (logicalCores > 0 && logicalCores <= 4));
-    const isLowEndDevice =
+    const shouldUseLiteMode =
         hasDataSaver ||
-        isVeryLowResourceDevice ||
+        isVeryLowResourceDevice;
+    const isLowEndDevice =
+        shouldUseLiteMode ||
         isLowResourceMobile;
 
     // Respect OS accessibility preference without forcing full lite mode on desktop.
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('reduced-motion-mode');
     }
 
-    if (isLowEndDevice) {
+    if (shouldUseLiteMode) {
         document.body.classList.add('lite-mode');
     }
 
@@ -245,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Scroll Reveal Animation ---
     const revealElements = document.querySelectorAll('.reveal');
 
-    if (isLowEndDevice) {
+    if (shouldUseLiteMode) {
         revealElements.forEach((el) => el.classList.add('active'));
     } else {
         const revealOnScroll = () => {
